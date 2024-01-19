@@ -44,46 +44,46 @@ const Home: React.FC = () => {
       two: 'Contact us anytime.',
     });
 
-    // const BigPicture = document.createElement('script');
-    // BigPicture.src = 'src/vendors/bigpicture/BigPicture.js';
-    // document.body.appendChild(BigPicture);
+    const BigPicture = document.createElement('script');
+    BigPicture.src = 'src/vendors/bigpicture/BigPicture.js';
+    document.body.appendChild(BigPicture);
 
-    // const Swiper = document.createElement('script');
-    // Swiper.src = 'src/vendors/swiper/swiper-bundle.min.js';
-    // document.body.appendChild(Swiper);
+    const Swiper = document.createElement('script');
+    Swiper.src = 'src/vendors/swiper/swiper-bundle.min.js';
+    document.body.appendChild(Swiper);
 
-    // const Is = document.createElement('script');
-    // Is.src = 'src/vendors/is/is.min.js';
-    // document.body.appendChild(Is);
+    const Is = document.createElement('script');
+    Is.src = 'src/vendors/is/is.min.js';
+    document.body.appendChild(Is);
 
-    // const Popper = document.createElement('script');
-    // Popper.src = 'src/vendors/popper/popper.min.js';
-    // document.body.appendChild(Popper);
+    const Popper = document.createElement('script');
+    Popper.src = 'src/vendors/popper/popper.min.js';
+    document.body.appendChild(Popper);
 
-    // const CountUp = document.createElement('script');
-    // CountUp.src = 'src/vendors/countup/countUp.umd.js';
-    // document.body.appendChild(CountUp);
+    const CountUp = document.createElement('script');
+    CountUp.src = 'src/vendors/countup/countUp.umd.js';
+    document.body.appendChild(CountUp);
 
-    // const Gsap = document.createElement('script');
-    // Gsap.src = 'src/vendors/gsap/gsap.js';
-    // document.body.appendChild(Gsap);
+    const Gsap = document.createElement('script');
+    Gsap.src = 'src/vendors/gsap/gsap.js';
+    document.body.appendChild(Gsap);
 
-    // const CustomEase = document.createElement('script');
-    // CustomEase.src = 'src/vendors/gsap/customEase.js';
-    // document.body.appendChild(CustomEase);
+    const CustomEase = document.createElement('script');
+    CustomEase.src = 'src/vendors/gsap/customEase.js';
+    document.body.appendChild(CustomEase);
 
-    // const ImagesLoaded = document.createElement('script');
-    // ImagesLoaded.src =
-    //   'src/vendors/imagesloaded/imagesloaded.pkgd.min.js';
-    // document.body.appendChild(ImagesLoaded);
+    const ImagesLoaded = document.createElement('script');
+    ImagesLoaded.src =
+      'src/vendors/imagesloaded/imagesloaded.pkgd.min.js';
+    document.body.appendChild(ImagesLoaded);
 
-    // const Lodash = document.createElement('script');
-    // Lodash.src = 'src/vendors/lodash/lodash.min.js';
-    // document.body.appendChild(Lodash);
+    const Lodash = document.createElement('script');
+    Lodash.src = 'src/vendors/lodash/lodash.min.js';
+    document.body.appendChild(Lodash);
 
-    // const Theme = document.createElement('script');
-    // Theme.src = 'src/assets/js/theme.js';
-    // document.body.appendChild(Theme);
+    const Theme = document.createElement('script');
+    Theme.src = 'src/assets/js/theme.js';
+    document.body.appendChild(Theme);
 
     localStorage.removeItem(Environment.LOCAL_STORAGE_USER);
     localStorage.removeItem(
@@ -91,16 +91,16 @@ const Home: React.FC = () => {
     );
 
     return () => {
-      // document.body.removeChild(BigPicture);
-      // document.body.removeChild(Swiper);
-      // document.body.removeChild(Is);
-      // document.body.removeChild(Popper);
-      // document.body.removeChild(CountUp);
-      // document.body.removeChild(Gsap);
-      // document.body.removeChild(CustomEase);
-      // document.body.removeChild(ImagesLoaded);
-      // document.body.removeChild(Lodash);
-      // document.body.removeChild(Theme);
+      document.body.removeChild(BigPicture);
+      document.body.removeChild(Swiper);
+      document.body.removeChild(Is);
+      document.body.removeChild(Popper);
+      document.body.removeChild(CountUp);
+      document.body.removeChild(Gsap);
+      document.body.removeChild(CustomEase);
+      document.body.removeChild(ImagesLoaded);
+      document.body.removeChild(Lodash);
+      document.body.removeChild(Theme);
     };
   }, []);
 

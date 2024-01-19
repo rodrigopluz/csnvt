@@ -83,7 +83,7 @@ const Contact: React.FC = () => {
       <Menu />
       <BannerContact />
       <main className="main" id="top">
-        <Preloader />
+        {/* <Preloader /> */}
         <section className="bg-100">
           <div className="container">
             <div className="row align-items-stretch justify-content-center mb-4">
