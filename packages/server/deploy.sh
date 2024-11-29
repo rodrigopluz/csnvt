@@ -22,6 +22,9 @@ yarn install || { echo "❌ Falha ao instalar dependências"; exit 1; }
 echo "🛠️ Compilando projeto Node.js..."
 yarn run build || { echo "❌ Falha na compilação"; exit 1; }
 
+echo "🔧 Ajustando permissões do diretório dist..."
+chmod -R 755 dist || { echo "❌ Falha ao ajustar permissões"; exit 1; }
+
 echo "🚀 Instalando PM2 globalmente..."
 sudo yarn global add pm2 || { echo "❌ Falha ao instalar PM2"; exit 1; }
 
