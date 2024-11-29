@@ -6,10 +6,7 @@ on:
       - main
 
 env:
-  FTP_SERVER: ${{ secrets.FTP_SERVER }}
-  FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
-  FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
-  SSH_PRIVATE_KEY: ${{ secrets.JWT_SECRET }}
+  VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN_CSNVT }}
 
 jobs:
   build-and-deploy:
@@ -45,20 +42,8 @@ jobs:
       - name: 🕵️ Verificar diretório de saída do back-end
         run: ls -la packages/server/dist
 
-      - name: 📤 Fazer deploy do front-end
+      - name: 📤 Fazer deploy do front-end na Vercel
         run: bash packages/web/deploy.sh
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
 
-      - name: 📤 Fazer deploy do back-end
+      - name: 📤 Fazer deploy do back-end na Vercel
         run: bash packages/server/deploy.sh
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-
-      - name: 📂 Sync files to Kinghost
-        uses: SamKirkland/FTP-Deploy-Action@4.3.0
-        with:
-          server: ${{ env.FTP_SERVER }}
-          username: ${{ env.FTP_USERNAME }}
-          password: ${{ env.FTP_PASSWORD }}
-          server-dir: /public_html/www/app_nodejs/
