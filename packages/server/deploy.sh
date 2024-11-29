@@ -4,11 +4,11 @@
 git pull origin main
 
 # Verifica se o arquivo .env.production existe
-if [ -e .env.production ]; then
-  mv .env.production .env
-  echo "Arquivo .env.production renomeado para .env"
+if [ -e .env.developent ]; then
+  mv .env.developent .env
+  echo "Arquivo .env.developent renomeado para .env"
 else
-  echo "Arquivo .env.production não encontrado"
+  echo "Arquivo .env.developent não encontrado"
 fi
 
 # Instala as dependências

@@ -33,19 +33,19 @@ jobs:
       - name: 🛠️ Construir o front-end
         run: yarn workspace @csnvt/web build
 
-      - name: 🛠️ Construir o back-end
-        run: yarn workspace @csnvt/server build
-
       - name: 🕵️ Verificar diretório de saída do front-end
-        run: ls -la packages/web/dist
-
-      - name: 🕵️ Verificar diretório de saída do back-end
-        run: ls -la packages/server/dist
+        run: ls -la packages/web
 
       - name: 📤 Fazer deploy do front-end na Vercel
         run: bash packages/web/deploy.sh
         env:
           VERCEL_TOKEN_CSNVT: ${{ secrets.VERCEL_TOKEN_CSNVT }}
+
+      - name: 🛠️ Construir o back-end
+        run: yarn workspace @csnvt/server build
+
+      - name: 🕵️ Verificar diretório de saída do back-end
+        run: ls -la packages/server/dist
 
       - name: 📤 Fazer deploy do back-end na Vercel
         run: bash packages/server/deploy.sh
