@@ -12,7 +12,7 @@ env:
   SSH_PRIVATE_KEY: ${{ secrets.JWT_SECRET }}
 
 jobs:
-  deploy:
+  build-and-deploy:
     name: 🎉 Deploy
     runs-on: ubuntu-latest
 
@@ -33,18 +33,24 @@ jobs:
       - name: 🛠️ Install dependencies
         run: yarn install
 
-      - name: 🚀 Build front-end
+      - name: 🛠️ Construir o front-end
         run: yarn workspace @csnvt/web build
 
-      - name: 🚀 Deploy front-end
+      - name: 🛠️ Construir o back-end
+        run: yarn workspace @csnvt/server build
+
+      - name: 🕵️ Verificar diretório de saída do front-end
+        run: ls -la packages/web/dist
+
+      - name: 🕵️ Verificar diretório de saída do back-end
+        run: ls -la packages/server/dist
+
+      - name: 📤 Fazer deploy do front-end
         run: bash packages/web/deploy.sh
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
 
-      - name: 🚀 Build back-end
-        run: yarn workspace @csnvt/server build
-
-      - name: 🚀 Deploy server-end
+      - name: 📤 Fazer deploy do back-end
         run: bash packages/server/deploy.sh
         env:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
