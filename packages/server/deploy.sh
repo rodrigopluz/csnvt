@@ -1,25 +1,31 @@
 #!/bin/bash
 
-# Atualiza o código do repositório
-git pull origin main
+set -e  # Para o script em caso de erro
 
-# Verifica se o arquivo .env existe
+echo "🚀 Atualizando código do repositório..."
+git pull origin main || { echo "❌ Falha no git pull"; exit 1; }
+
 if [ -e .env.production ]; then
-  # Renomeia o arquivo .env.production para .env
-  mv .env.production .env
-  echo "Arquivo .env.production renomeado para .env"
+  if [ ! -e .env ]; then
+    echo "🔧 Renomeando .env.production para .env..."
+    mv .env.production .env || { echo "❌ Falha ao renomear .env.production"; exit 1; }
+  else
+    echo "⚠️ Arquivo .env já existe. Renomeie manualmente, se necessário."
+  fi
 else
-  echo "Arquivo .env.production não encontrado"
+  echo "⚠️ Arquivo .env.production não encontrado. Certifique-se de configurá-lo."
 fi
 
-# Instala as dependências do Node.js
-yarn install
+echo "📦 Instalando dependências do Node.js..."
+yarn install || { echo "❌ Falha ao instalar dependências"; exit 1; }
 
-# Compilação do TypeScript
-yarn run build
+echo "🛠️ Compilando projeto Node.js..."
+yarn run build || { echo "❌ Falha na compilação"; exit 1; }
 
-# Instalação do PM2
-sudo yarn global add pm2
+echo "🚀 Instalando PM2 globalmente..."
+sudo yarn global add pm2 || { echo "❌ Falha ao instalar PM2"; exit 1; }
 
-# Reinicia o servidor Node.js usando PM2
-pm2 restart ./dist/index.js
+echo "♻️ Reiniciando o servidor com PM2..."
+pm2 restart dist/index.js --name my-app || { echo "❌ Falha ao reiniciar com PM2"; exit 1; }
+
+echo "✅ Deploy do backend concluído com sucesso!"
