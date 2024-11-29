@@ -34,7 +34,10 @@ jobs:
         run: yarn workspace @csnvt/web build
 
       - name: 🕵️ Verificar diretório de saída do front-end
-        run: ls -la packages/web
+        run: ls -la packages/web/dist
+
+      - name: 🛠️ Garantir permissões do diretório
+        run: chmod -R 755 packages/web/dist
 
       - name: 📤 Fazer deploy do front-end na Vercel
         run: bash packages/web/deploy.sh

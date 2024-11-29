@@ -1,8 +1,7 @@
 #!/bin/bash
 
-cd packages/web
-
-yarn build
+echo "Verificando diretório dist..."
+ls -la packages/web/dist
 
 # Verifica se o diretório dist existe
 if [ ! -d "dist" ]; then
