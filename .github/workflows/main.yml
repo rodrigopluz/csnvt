@@ -1,9 +1,15 @@
-name: 🚀 Build and Deploy CSNVT Website on GitHub Actions by Kinghost
+name: 🚀 Build and Deploy CSNVT Website on GitHub Actions
 
 on:
   push:
     branches:
       - main
+
+env:
+  FTP_SERVER: ${{ secrets.FTP_SERVER }}
+  FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
+  FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+  SSH_PRIVATE_KEY: ${{ secrets.JWT_SECRET }}
 
 jobs:
   deploy:
@@ -13,33 +19,29 @@ jobs:
     strategy:
       matrix:
         node-version: [18]
+        package: [server, web]
 
     steps:
-      - name: 🚚 Get the code
-        uses: actions/checkout@v2
+      - name: 🚚 Check out code
+        uses: actions/checkout@v3
 
       - name: 📦 Setup Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
 
-      - name: 🛠️ Build the project
+      - name: 🛠️ Install dependencies
         run: yarn install
 
-      - name: Build and Deploy Backend
-        run: bash packages/server/deploy.sh
+      - name: 🚀 Build and Deploy
+        run: bash packages/${{ matrix.package }}/deploy.sh
         env:
-          SSH_PRIVATE_KEY: ${{ process.env.JWT_SECRET }}
-
-      - name: Build and Deploy Frontend
-        run: bash packages/web/deploy.sh
-        env:
-          SSH_PRIVATE_KEY: ${{ process.env.JWT_SECRET }}
+          SSH_PRIVATE_KEY: ${{ env.SSH_PRIVATE_KEY }}
 
       - name: 📂 Sync files to Kinghost
-        uses: SamKirkland/FTP-Deploy-Action@4.0.0
+        uses: SamKirkland/FTP-Deploy-Action@4.3.0
         with:
-          server: ${{ process.env.FTP_SERVER }}
-          username: ${{ process.env.FTP_USERNAME }}
-          password: ${{ process.env.FTP_PASSWORD }}
+          server: ${{ env.FTP_SERVER }}
+          username: ${{ env.FTP_USERNAME }}
+          password: ${{ env.FTP_PASSWORD }}
           server-dir: /public_html/www/app_nodejs/
