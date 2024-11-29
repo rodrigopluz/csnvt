@@ -26,3 +26,5 @@ db-mysql
 *.sln
 *.sw?
 */**/.env
+*/**/.env.developent
+*/**/.env.production
