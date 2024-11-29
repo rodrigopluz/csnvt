@@ -1,8 +1,15 @@
 #!/bin/bash
 
+cd packages/web
+
+yarn build
+
 # Verifica se o diretório dist existe
 if [ ! -d "dist" ]; then
-  echo "O diretório 'dist' não foi encontrado! Certifique-se de ter executado 'yarn build' corretamente."
+  echo "Diretório dist encontrado, iniciando o deploy."
+  vercel --prod --token $VERCEL_TOKEN_CSNVT
+else
+  echo "Erro: Diretório dist não encontrado!"
   exit 1
 fi
 
