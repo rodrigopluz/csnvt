@@ -6,7 +6,7 @@ on:
       - main
 
 env:
-  VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN_CSNVT }}
+  VERCEL_TOKEN_CSNVT: ${{ secrets.VERCEL_TOKEN_CSNVT }}
 
 jobs:
   build-and-deploy:
@@ -44,6 +44,10 @@ jobs:
 
       - name: 📤 Fazer deploy do front-end na Vercel
         run: bash packages/web/deploy.sh
+        env:
+          VERCEL_TOKEN_CSNVT: ${{ secrets.VERCEL_TOKEN_CSNVT }}
 
       - name: 📤 Fazer deploy do back-end na Vercel
         run: bash packages/server/deploy.sh
+        env:
+          VERCEL_TOKEN_CSNVT: ${{ secrets.VERCEL_TOKEN_CSNVT }}

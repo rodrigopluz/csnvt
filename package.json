@@ -13,10 +13,10 @@
   },
   "scripts": {
     "dev": "concurrently \"yarn workspace @csnvt/web dev\" \"yarn workspace @csnvt/server dev\"",
-    "start": "concurrently \"npm workspace @csnvt/web start\" \"npm workspace @csnvt/server start\"",
+    "start": "concurrently \"yarn workspace @csnvt/web start\" \"yarn workspace @csnvt/server start\"",
     "build": "yarn workspace @csnvt/web build && yarn workspace @csnvt/server build",
     "predeploy": "yarn workspace @csnvt/web build && yarn workspace @csnvt/server build",
-    "deploy": "gh-pages -d packages/web/dist && packages/server/dist",
+    "deploy": "gh-pages -d packages/web/dist && scp -r packages/server/dist/* user@your-server:/path/to/deploy",
     "test": "jest"
   },
   "devDependencies": {
