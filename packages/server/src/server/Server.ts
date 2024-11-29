@@ -9,9 +9,7 @@ import { JSONParserError } from '@csnvt/middleware';
 const server = express();
 
 server.use(
-  cors({
-    origin: process.env.ENABLED_CORS?.split(';') || [],
-  }),
+  cors({ origin: process.env.ENABLED_CORS?.split(';') || [] }),
 );
 
 server.use(express.json());

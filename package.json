@@ -1,36 +1,35 @@
 {
-  "homepage": "https://rodrigopluz.github.io/csnvt",
   "name": "csnvt",
   "private": true,
   "version": "1.0.0",
   "main": "index.js",
-  "author": "rodrigopluz <rodrigo.pluz@2ndmarket.com.br>",
+  "author": "Rodrigo Pereira <rodrigopluz@gmail.com>",
   "license": "MIT",
-  "scripts": {
-    "dev": "concurrently \"yarn workspace @csnvt/web dev\" \"yarn workspace @csnvt/server dev\"",
-    "start": "concurrently \"yarn workspace @csnvt/web start\" \"yarn workspace @csnvt/server start\"",
-    "build": "yarn workspace @csnvt/web build && yarn workspace @csnvt/server build",
-    "predeploy": "yarn workspace @csnvt/web build && yarn workspace @csnvt/server build",
-    "deploy": "gh-pages -d packages/web/dist && packages/server/dist",
-    "test": "jest"
-  },
   "workspaces": {
     "packages": [
       "packages/*",
       "packages/shared/*"
     ]
   },
+  "scripts": {
+    "dev": "concurrently \"yarn workspace @csnvt/web dev\" \"yarn workspace @csnvt/server dev\"",
+    "start": "concurrently \"npm workspace @csnvt/web start\" \"npm workspace @csnvt/server start\"",
+    "build": "yarn workspace @csnvt/web build && yarn workspace @csnvt/server build",
+    "predeploy": "yarn workspace @csnvt/web build && yarn workspace @csnvt/server build",
+    "deploy": "gh-pages -d packages/web/dist && packages/server/dist",
+    "test": "jest"
+  },
   "devDependencies": {
     "@csnvt/eslint-config": "*",
-    "@types/jest": "^26.0.15",
     "@types/node": "^20.10.5",
     "concurrently": "^8.2.2",
     "gh-pages": "^6.1.1",
-    "jest": "29.7.0",
     "ts-jest": "26.5.4",
     "typescript": "4.1.3"
   },
   "dependencies": {
+    "@csnvt/server": "*",
+    "@csnvt/web": "*",
     "axios": "^1.6.2",
     "yup": "^1.3.3"
   }

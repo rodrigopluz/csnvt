@@ -109,7 +109,7 @@ const Home: React.FC = () => {
       <Headers />
       <Menu />
       <main className="main" id="top">
-        {/* <Preloader /> */}
+        <Preloader />
         <Banner />
         <Welcome />
         <Services />

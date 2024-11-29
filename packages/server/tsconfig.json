@@ -1,15 +1,22 @@
 {
   "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "rootDir": "./src",
+    "outDir": "./dist",
+    "lib": ["ES2016"],
+    "strict": true,
+    "esModuleInterop": true,
+    "moduleResolution": "Node"
+  },
   "include": ["src/**/*"],
   "exclude": [
-    "dist",
     "node_modules",
     "./**/**/seeds",
     "./**/**/migrations"
   ],
-  "compilerOptions": {
-    "baseUrl": "./src",
-    "rootDir": "./src",
-    "outDir": "./dist"
+  "ts-node": {
+    "esm": true,
+    "experimentalSpecifierResolution": "node"
   }
 }

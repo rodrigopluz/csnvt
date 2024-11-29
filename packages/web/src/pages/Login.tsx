@@ -147,7 +147,7 @@ const Login: React.FC = () => {
 
   return (
     <main className="main" id="top">
-      {/* <Preloader /> */}
+      <Preloader />
       <section className="text-center py-0">
         <div
           className="bg-holder overlay overlay-2"

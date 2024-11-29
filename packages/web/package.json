@@ -4,11 +4,11 @@
   "version": "1.0.0",
   "license": "MIT",
   "type": "module",
-  "main": "index.js",
+  "main": "main.tsx",
   "keywords": [
     "react",
     "vite",
-    "jsx"
+    "typescript"
   ],
   "scripts": {
     "dev": "vite",
@@ -19,7 +19,6 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@csnvt/environment": "*",
     "@csnvt/hooks": "*",
     "@csnvt/services": "*",
     "@csnvt/types": "*",
@@ -32,19 +31,19 @@
     "react-bigpicture": "^1.0.26",
     "react-bootstrap": "^2.9.2",
     "react-dom": "^18.2.0",
-    "react-hook-form": "^7.49.2",
+    "react-hook-form": "~7.29.0",
     "react-router-dom": "^6.21.0",
     "rollup-plugin-polyfill-node": "^0.13.0"
   },
   "devDependencies": {
+    "@csnvt/eslint-config": "*",
     "@esbuild-plugins/node-globals-polyfill": "^0.2.3",
     "@esbuild-plugins/node-modules-polyfill": "^0.2.2",
     "@testing-library/react-hooks": "^8.0.1",
-    "@types/bootstrap": "^5.2.10",
     "@types/react": "^18.2.43",
     "@types/react-dom": "^18.2.17",
     "@types/youtube": "^0.0.50",
-    "@vitejs/plugin-react": "^4.2.1",
-    "vite": "^5.0.8"
+    "@vitejs/plugin-react": "~4.2.1",
+    "vite": "~4.0.1"
   }
 }

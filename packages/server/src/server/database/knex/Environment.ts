@@ -29,6 +29,7 @@ export const test: Knex.Config = {
 
 export const production: Knex.Config = {
   client: 'mysql2',
+  version: '5.7',
   migrations: {
     directory: path.resolve(__dirname, '..', 'migrations'),
   },

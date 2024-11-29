@@ -117,7 +117,7 @@ const Locations: React.FC = () => {
       <Headers />
       <Menu />
       <main className="main" id="top">
-        {/* <Preloader /> */}
+        <Preloader />
         <section className="bg-200" id="portsbr">
           <div className="text-center mb-6">
             <h3 className="fs-2 fs-md-3">All Ports Assisted</h3>
